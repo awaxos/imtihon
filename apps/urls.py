@@ -1,15 +1,14 @@
 from django.urls import path
-from apps.views import LoginTemplateView, ProfileTemplateView, RegisterTemplateView
+from apps.views import ListPage, Register, LoginView
 
 urlpatterns = [
-    # path('', IndexListView.as_view(), name='list_view'),
-    path('profile', ProfileTemplateView.as_view(), name='profile_page'),
-    # path('login', LoginTemplateView.as_view(
-    #     template_name='apps/auth/login.html',
-    #     next_page='profile_page',
-    #     redirect_authenticated_user=True),
-    #     name='login_page'),
-    path('register', RegisterTemplateView.as_view(), name='register_page'),
+    path('login', LoginView.as_view(
+        template_name='apps/login/login.html',
+        next_page='list_page',
+        redirect_authenticated_user=True),
+        name='login_page'),
+    path('register', Register.as_view(), name='register_page'),
+    path('list', ListPage.as_view(), name='list_page'),
     # path('detail/<int:pk>', ProductdetailView, name='detail_view'),
 ]
 

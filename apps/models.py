@@ -1,7 +1,7 @@
 import uuid
 
 from django.contrib.auth.models import AbstractUser
-from django.db.models import Model, CharField, IntegerField, DateTimeField, TextField, ImageField
+from django.db.models import Model, CharField, ForeignKey, CASCADE, IntegerField, DateTimeField, TextField, ImageField
 from django.utils.translation import gettext_lazy as _
 
 # class Tag(Model):
@@ -17,12 +17,12 @@ from django.utils.translation import gettext_lazy as _
 #     photo = ImageField(upload_to='blog/')
 
 
-class Category(Model):
-    name = CharField(max_length=255, verbose_name=_("Name"))
-
-    class Meta:
-        verbose_name = _('category')
-        verbose_name_plural = _('categories')
+# class Category(Model):
+#     name = CharField(max_length=255, verbose_name=_("Name"))
+#
+#     class Meta:
+#         verbose_name = _('category')
+#         verbose_name_plural = _('categories')
 
 
 #
@@ -43,21 +43,21 @@ class Category(Model):
 #     uuid = UUIDField(default=uuid.uuid4, primary_key=True)
 
 #
-class Product(Model):
-    name = CharField(max_length=255, verbose_name=_("Name"))
-    image = ImageField(upload_to='product/', verbose_name=_("Image"))
-    price = IntegerField(verbose_name=_("Price"))
-    # category = ManyToManyField('apps.Category', blank=True)
-    description = TextField()
-    # user = ForeignKey('auth.User', CASCADE)
-    # type = ForeignKey('apps.Type', CASCADE)
-    # color = ForeignKey('apps.Color', CASCADE)
-    # brand = ForeignKey('apps.Brand', CASCADE)
-    created_at = DateTimeField(auto_now_add=True, verbose_name=_("created_at"))
-
-    class Meta:
-        verbose_name = _('product')
-        verbose_name_plural = _('products')
+# class Product(Model):
+#     name = CharField(max_length=255, verbose_name=_("Name"))
+#     image = ImageField(upload_to='product/', verbose_name=_("Image"))
+#     price = IntegerField(verbose_name=_("Price"))
+#     # category = ManyToManyField('apps.Category', blank=True)
+#     description = TextField()
+#     # user = ForeignKey('auth.User', CASCADE)
+#     # type = ForeignKey('apps.Type', CASCADE)
+#     # color = ForeignKey('apps.Color', CASCADE)
+#     # brand = ForeignKey('apps.Brand', CASCADE)
+#     created_at = DateTimeField(auto_now_add=True, verbose_name=_("created_at"))
+#
+#     class Meta:
+#         verbose_name = _('product')
+#         verbose_name_plural = _('products')
 
 # class Position(Model):
 #     name = CharField(max_length=50)
@@ -166,6 +166,18 @@ class Product(Model):
 #     class Meta:
 #         verbose_name = _('product')
 #         verbose_name_plural = _('products')
+
+
+class Work(Model):
+    name = CharField(max_length=255)
+
+
+class Profile(Model):
+    first_name = CharField(max_length=50)
+    last_name = CharField(max_length=50)
+    address = CharField(max_length=255)
+    work = ForeignKey('apps.Work', CASCADE)
+
 
 
 '''

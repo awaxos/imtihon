@@ -2,33 +2,18 @@ from django.contrib.admin import ModelAdmin
 from django.contrib import admin
 from django.contrib.auth.models import Group, User
 
-from apps.models import Category, Product
+from apps.models import Profile, Work
 
 
-@admin.register(Category)
-class CategoryModelAdmin(admin.ModelAdmin):
+@admin.register(Profile)
+class ProfileModelAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Product)
-class ProductModelAdmin(admin.ModelAdmin):
+@admin.register(Work)
+class WorkModelAdmin(admin.ModelAdmin):
     pass
 
-
-# @admin.register(Blog)
-# class BlogInfoAdmin(admin.ModelAdmin):
-#     list_display = ['name']
-#
-#
-# @admin.register(Category)
-# class CategoryAdmin(admin.ModelAdmin):
-#     list_display = ['name']
-#
-#
-# @admin.register(CustomUser)
-# class UserModelAdmin(admin.ModelAdmin):
-#     list_display = ['id', 'username']
-#
 #
 # @admin.register(Product)
 # class ProductModelAdmin(admin.ModelAdmin):
